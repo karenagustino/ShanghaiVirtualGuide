@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<form action="/comment" method="post">
+    {% for message in get_flashed_messages()%}
+        {{message}}
+    {% endfor%}
+    <textarea name="comments" placeholder="Enter comment">{{comment}}</textarea>
+    <input type="hidden" name="place" value="{{place}}">
+    <input type="hidden" name="user" value="{{user}}">
+    <input type="submit" value="submit">
+</form>
+<div>
+    {%for comments in allcomments%}
+    <p>{{comments.comment}}</p>
+    {%endfor%}
+</div>
+{%endblock%}

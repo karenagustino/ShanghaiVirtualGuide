@@ -1,0 +1,284 @@
+{% extends "base.html" %}
+{% block title %}Line One{% endblock %}
+{% block content %}
+<html>
+<head>
+<style>
+.page-header {
+  background-color: powderblue;
+  color: black;
+  margin: 15px;
+  padding: 15px;
+}
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+.button {
+  border-radius: 5px;
+  position: relative;
+  background-color: #f4511e;
+  border: none;
+  font-size: 12px;
+  color: #FFFFFF;
+  padding: 5px ;
+  width: 150px;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+
+.submitbutton {
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #808000;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  padding: 5px;
+  width: 70px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.submitbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.submitbutton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.submitbutton:hover span {
+  padding-right: 25px;
+}
+
+.submitbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+</style>
+</head>
+<body>
+    <div class="page-header">
+        {% for message in get_flashed_messages()%}
+            {{message}}
+        {% endfor%}
+        <h1 style="margin-top:0em">Shanghai Circus World Station</h1>
+        <b><u>Faigo Hotpot</u></b>
+        <p style="font-family:trebuchet MS;color:sienna;">Food Type: Chinese</p>
+        <div class="row">
+            <div class="column">
+                <img id="myImg" src="{{url_for('static', filename='faigohotpot.png')}}" alt="Food" width="300" height="180" >
+            </div>
+        </div>
+        <br>
+        <b>Comments</b>
+        {% for message in get_flashed_messages()%}
+            {{message}}
+        {% endfor%}
+        <form action="/faigohotpotprocess" method="post">
+            {% for message in get_flashed_messages()%}
+                {{message}}
+            {% endfor%}
+            <textarea rows="4" cols="40" name="comments" placeholder="Enter your feedback here">{{comment}}</textarea>
+            <input type="hidden" name="place" value="{{place}}">
+            <input type="hidden" name="user" value="{{user}}">
+            <br>
+            <input class="submitbutton" style="vertical-align:middle" type="submit" value="Submit">
+        </form>
+        <br>
+        <button class="button" id="sorting" type="button" onclick="sortcomment();">Sort (most to less recent)</button>
+        <br>
+        <b>Your Previous Comments: </b>
+        <div>
+            <ol id="totalcomments">
+
+                {%for comments in allcomments%}
+                <li comment_id="{{comments.comments_id}}" name="comment"><p style="color:navy;">{{comments.comment}}</p></li>
+                {%endfor%}
+
+            </ol>
+        </div>
+    </div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+
+<script>
+function sortcomment() {
+    var elements = document.getElementsByName('comment');
+    var data = Array();
+    for(var i = 0; i < elements.length; i++) {
+        data.push(elements[i].getAttribute('comment_id'));
+    }
+    var sorted = Array();
+    data.sort(function(a, b){
+        return b-a
+    });
+    for(var j = 0; j < elements.length; j++) {
+        sorted.push(document.querySelectorAll("[comment_id='" + data[j] + "']")[0].outerHTML);
+    }
+    document.getElementById("totalcomments").innerHTML = sorted.join("");
+}
+</script>
+</body>
+</html>
+{% endblock %}

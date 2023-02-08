@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Line One{% endblock %}
+{% block content %}
+<html>
+<head>
+<style>
+.page-header {
+  background-color: powderblue;
+  color: black;
+  margin: 15px;
+  padding: 15px;
+}
+</style>
+
+</head>
+<body>
+    <div class="page-header">
+        {% for message in get_flashed_messages()%}
+            {{message}}
+        {% endfor%}
+        <h3 style="text-align:right;font-family:verdana;color:red;font-size:20px">Line code: red </h3>
+        <h4 style="text-align:right;font-family:verdana;color:crimson;font-size:15px">Fujin Rd - Xinzhuang </h4>
+        <h5 style="text-align:right;font-family:verdana;color:darkolivegreen;font-size:15px">Transfer to: Line 9 and 11 </h5>
+        <h1 style="margin-top:0em">People's Square</h1>
+        <p><u>Food Destination</u></p>
+        <p><a href="#">1. Din Tai Fung</a></p>
+        <p><a href="#">2. Da Shu Wu Jie</a></p>
+        <p><a href="#">3. Ye Olde Station Restaurant</a></p>
+        <br>
+        <p><u>Fancy Attractions</u></p>
+        <p><a href="#">1. Hengshan Leisure Street</a></p>
+        <p><a href="#">2. Metro City Plaza</a></p>
+        <p><a href="#">3. Xujiahui Park</a></p>
+    </div>
+
+
+
+</body>
+</html>
+{% endblock %}

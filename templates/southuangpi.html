@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Line One{% endblock %}
+{% block content %}
+<html>
+<head>
+<style>
+.page-header {
+  background-color: powderblue;
+  color: black;
+  margin: 15px;
+  padding: 15px;
+}
+</style>
+
+</head>
+<body>
+    <div class="page-header">
+        {% for message in get_flashed_messages()%}
+            {{message}}
+        {% endfor%}
+        <h3 style="text-align:right;font-family:verdana;color:red;font-size:20px">Line code: red </h3>
+        <h4 style="text-align:right;font-family:verdana;color:crimson;font-size:15px">Fujin Rd - Xinzhuang </h4>
+
+        <h1 style="margin-top:0em">South Huangpi Station</h1>
+        <p><u>Food Destination</u></p>
+        <p><a href="#">1. Sproutworks (Xintiandi)</a></p>
+        <p><a href="#">2. Koyama (Xinting)</a></p>
+        <p><a href="#">3. Shanghai Bellagio Cafe (Xintiandi)</a></p>
+        <br>
+        <p><u>Fancy Attractions</u></p>
+        <p><a href="#">1. XinTianDi</a></p>
+        <p><a href="#">2. k11 Art Mall</a></p>
+        <p><a href="#">3. Glass Museum of China</a></p>
+    </div>
+
+
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Places Visited{% endblock %}
+{% block content %}
+<html>
+<head>
+<style>
+.page-header {
+  background-color: powderblue;
+  color: black;
+  margin: 15px;
+  padding: 15px;
+}
+</style>
+<body>
+    <div class="page-header">
+        <h3 style="font-size:15px;">Places you have visited: </h3>
+        <ul>
+            {% for place in tempatkunjung %}
+            <li>{{place}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+{%endblock%}
+
+
+

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Line One{% endblock %}
+{% block content %}
+<html>
+<head>
+<style>
+.page-header {
+  background-color: powderblue;
+  color: black;
+  margin: 15px;
+  padding: 15px;
+}
+</style>
+</head>
+<body>
+    <div class="page-header">
+        {% for message in get_flashed_messages()%}
+            {{message}}
+        {% endfor%}
+        <h3 style="text-align:right;font-family:verdana;color:red;font-size:20px">Line code: red </h3>
+        <h4 style="text-align:right;font-family:verdana;color:crimson;font-size:15px">Fujin Rd - Xinzhuang </h4>
+        <h5 style="background-color:Lightyellow;text-align:center;font-family:verdana;color:saddlebrown;font-size:50px">
+            You have been to {{jumlah}}% of Line 1</h5>
+        <h1 style="margin-top:0em">Metro Stations (Line 1)</h1>
+        <form action="/line1process" method="post">
+        <p style="color:red">Fujin Road</p>
+        <p style="color:red">West Youyi Road</p>
+        <p style="color:red">Bao'an Highway</p>
+        <p style="color:red">Gongfu Xincun</p>
+        <p style="color:red">Hulan Road</p>
+        <p style="color:red">Tonghe Xincun</p>
+        <p style="color:red">Gongkang Road</p>
+        <p style="color:red">Pengpu Xincun</p>
+        <p style="color:red">Wenshui Road</p>
+
+
+        <input type="checkbox" id="shcircuswrld" name="went2_shcircus[]" value="1" {% if "1" in dataa %} checked {% endif %}>
+          <label for="shcircuswrld" onclick='window.location.assign("shcircuswrld")'> Shanghai Circus World</label><br>
+        <p style="color:red">North Zhongshang Road</p>
+        <input type="checkbox" id="yanchang" name="went2_shcircus[]" value="2" {% if "2" in dataa %} checked {% endif %} >
+          <label for="yanchang" onclick='window.location.assign("yanchang")'> Yanchang Road</label><br>
+        <input type="checkbox" id="shrailway" name="went2_shcircus[]" value="3" {% if "3" in dataa %} checked {% endif %}>
+          <label for="shrailway" onclick='window.location.assign("shrailway")'> Shanghai Railway Station</label><br>
+        <p style="color:red">Hanzhong Road</p>
+        <p style="color:red">Xinzha Road</p>
+        <input type="checkbox" id="peoplesquare" name="went2_shcircus[]" value="4" {% if "4" in dataa %} checked {% endif %}>
+          <label for="peoplesquare" onclick='window.location.assign("peoplesquare")'> People's Square</label><br>
+        <input type="checkbox" id="southuangpi" name="went2_shcircus[]" value="5" {% if "5" in dataa %} checked {% endif %}>
+          <label for="southuangpi" onclick='window.location.assign("southuangpi")'> South Huangpi Road</label><br>
+        <input type="checkbox" id="southshaanxi" name="went2_shcircus[]" value="6" {% if "6" in dataa %} checked {% endif %}>
+          <label for="southshaanxi" onclick='window.location.assign("southshaanxi")'> South Shaanxi Road</label><br>
+        <input type="checkbox" id="changshu" name="went2_shcircus[]" value="7" {% if "7" in dataa %} checked {% endif %}>
+          <label for="changshu" onclick='window.location.assign("changshu")'> Changshu Road</label><br>
+        <input type="checkbox" id="hengshan" name="went2_shcircus[]" value="8" {% if "8" in dataa %} checked {% endif %}>
+          <label for="hengshan" onclick='window.location.assign("hengshan")'> Hengshan Road</label><br>
+        <input type="checkbox" id="xujiahui" name="went2_shcircus[]" value="9" {% if "9" in dataa %} checked {% endif %}>
+          <label for="xujiahui" onclick='window.location.assign("xujiahui")'> Xujiahui Road</label><br>
+        <p style="color:red">Shanghai Indoor Stadium</p>
+        <p style="color:red">Caobao Road</p>
+        <p style="color:red">Shanghai South Railway Station</p>
+        <p style="color:red">Jinjiang Park</p>
+        <p style="color:red">Lianhua Road</p>
+        <p style="color:red">Waihuanlu</p>
+        <p style="color:red">Xinzhuang</p>
+
+        <input type="submit" value="Submit" >
+
+        </form>
+
+    </div>
+
+
+
+</body>
+</html>
+{% endblock %}

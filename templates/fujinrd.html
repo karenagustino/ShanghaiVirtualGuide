@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Line One{% endblock %}
+{% block content %}
+<html>
+<head>
+<style>
+.page-header {
+  background-color: powderblue;
+  color: black;
+  margin: 15px;
+  padding: 15px;
+}
+</style>
+
+</head>
+<body>
+    <div class="page-header">
+        {% for message in get_flashed_messages()%}
+            {{message}}
+        {% endfor%}
+        <h3 style="text-align:right;font-family:verdana;color:red;font-size:20px">Line code: red </h3>
+        <h4 style="text-align:right;font-family:verdana;color:crimson;font-size:15px">Fujin Rd - Xinzhuang </h4>
+        <h1 style="margin-top:0em">Fujin Road</h1>
+        <p>Food Destination</p>
+        <form action="#">
+          <input type="checkbox" id="food1" name="food" value="FaigoHotpot">
+          <label for="food1"> Faigo Hotpot (Wanda)</label><br>
+          <input type="checkbox" id="food2" name="food" value="FengshouRi">
+          <label for="food2"> Fengshou Ri (Baoshan Wanda)</label><br>
+          <input type="checkbox" id="food3" name="food" value="Bifengtang">
+          <label for="food3"> Bifengtang (Baoshan Wanda)</label><br><br>
+          <input type="submit" value="Submit">
+        </form>
+        <br>
+        <p>Fancy Attractions</p>
+        <form action="#">
+          <input type="checkbox" id="attraction1" name="attraction" value="FaigoHotpot">
+          <label for="attraction1"> Faigo Hotpot (Wanda)</label><br>
+          <input type="checkbox" id="attraction2" name="attraction" value="FengshouRi">
+          <label for="attraction2"> Fengshou Ri (Baoshan Wanda)</label><br>
+          <input type="checkbox" id="attraction3" name="attraction" value="Bifengtang">
+          <label for="attraction3"> Bifengtang (Baoshan Wanda)</label><br><br>
+          <input type="submit" value="Submit">
+        </form>
+
+
+    </div>
+
+
+
+</body>
+</html>
+{% endblock %}
