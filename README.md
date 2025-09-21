@@ -1,4 +1,4 @@
-## Shanghai Virtual Guide
+## 🗺️ Shanghai Virtual Guide 🗺️ 
 
 # The Scenario (problem):  
 Being a 7-day boarding prefect is not an easy job. As a prefect, I have to help the Head of 7-day boarding, Mr. Cheong, give him some inputs on the fun activities that the boarders can do during the weekend and ask for feedback from the boarders about the previous weekend activities. Brainstorming for ideas and asking for suggestions from people might sometimes be frustrating, and we often end up doing repetitive activities every several weeks. That’s when I started thinking about making a program to fix this. 
